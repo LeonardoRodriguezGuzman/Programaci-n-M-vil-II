@@ -1,0 +1,12 @@
+Activity
+    Interfaz Gráfica
+
+BroadcastReceiver
+    Configurar que difusiones escuchar y que hacer
+
+Servicios
+    Programas que se ejecutan en segundo plano
+    Tradicional(Corutinas) y WorkManager
+
+ContentProvider
+    Acceso a los datos que generan las aplicaciones

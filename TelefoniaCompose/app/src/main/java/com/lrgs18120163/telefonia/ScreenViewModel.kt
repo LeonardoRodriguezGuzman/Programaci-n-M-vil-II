@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class ScreenViewModel : ViewModel() {
 
-    fun SendSMS(){
+    fun SendSMS() {
         val smsMessage = SmsManager.getDefault()
         smsMessage.sendTextMessage(
             "4171785080",
@@ -16,3 +16,4 @@ class ScreenViewModel : ViewModel() {
         )
     }
 }
+
