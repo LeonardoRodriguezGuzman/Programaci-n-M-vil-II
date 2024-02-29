@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.google.gson.Gson
 import com.lrgs18120163.sicedroid.model.AccesoAlumno
+import com.lrgs18120163.sicedroid.model.CargaAcademica
 import com.lrgs18120163.sicedroid.model.DatosAlumno
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -40,8 +41,12 @@ class MainActivity : ComponentActivity() {
                     mostrarMensaje(applicationContext,
                             "Carrera: ${dAlumno.carrera}, Semestre: ${dAlumno.semActual}"
                         )
+                   val cargaAcademica = repositorio.getCargaAcademicaByAlumno()
+                    val cAcademica = cargaAcademica?.split(",")
+                    val kardex = repositorio.getAllKardexConPromedioByAlumno(dAlumno.lineamiento)
 
-
+                    val calificaionesUnidad = repositorio.getCalifUnidadesByAlumno()
+                    val calificacionesFinales = repositorio.getAllCalifFinalByAlumnos(dAlumno.modEducativo)
                 }
             } catch (e: Exception){
                 Log.e("Error:", "${e.message}")

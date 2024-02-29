@@ -9,7 +9,12 @@ import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.lrgs18120163.sicedroid.network.CalificacionesFinalesApi
+import com.lrgs18120163.sicedroid.network.CalificacionesUnidadApi
+import com.lrgs18120163.sicedroid.network.CargaAcademicaApi
+import com.lrgs18120163.sicedroid.network.KardexApi
 import okhttp3.MediaType.Companion.toMediaType
+import retrofit2.create
 
 /**
  * Dependency Injection container at the application level.
@@ -51,10 +56,22 @@ class DefaultAppContainer(applicationContext: Context): AppContainer {
         retrofit.create(AccesoAlumnoApi::class.java)
     }
     private val retrofitDatosAlumno: DatosAlumnoApi by lazy {
-        retrofit.create((DatosAlumnoApi::class.java))
+        retrofit.create(DatosAlumnoApi::class.java)
+    }
+    private val retrofitCargaAcademica: CargaAcademicaApi by lazy {
+        retrofit.create(CargaAcademicaApi::class.java)
+    }
+    private val retrofitKardexApi: KardexApi by lazy {
+        retrofit.create(KardexApi::class.java)
+    }
+    private val retrofitCalificacionesUnidadApi: CalificacionesUnidadApi by lazy {
+        retrofit.create(CalificacionesUnidadApi::class.java)
+    }
+    private val retrofitCalificacionesFinalesApi: CalificacionesFinalesApi by lazy {
+        retrofit.create(CalificacionesFinalesApi::class.java)
     }
     override val repositorio: Repositorio by lazy {
-        Repositorio(retrofitAccesoAlumno, retrofitDatosAlumno)
+        Repositorio(retrofitAccesoAlumno, retrofitDatosAlumno, retrofitCargaAcademica, retrofitKardexApi, retrofitCalificacionesUnidadApi, retrofitCalificacionesFinalesApi)
     }
 
 
