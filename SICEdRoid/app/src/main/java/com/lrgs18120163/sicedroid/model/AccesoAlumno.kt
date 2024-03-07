@@ -2,7 +2,10 @@ package com.lrgs18120163.sicedroid.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "AccesoAlumno")
 @Serializable
 data class AccesoAlumno (
     @SerialName("acceso")
@@ -13,6 +16,7 @@ data class AccesoAlumno (
     val tipoUsuario : Int = 0,
     @SerialName("contrasenia")
     val contrasenia : String = "",
+    @PrimaryKey
     @SerialName("matricula")
     val matricula : String = ""
 )

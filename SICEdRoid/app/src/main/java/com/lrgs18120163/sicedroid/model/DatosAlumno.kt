@@ -1,8 +1,12 @@
 package com.lrgs18120163.sicedroid.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+
+@Entity
 @Serializable
 data class DatosAlumno(
     @SerialName("fechaReins")
@@ -33,6 +37,7 @@ data class DatosAlumno(
     var lineamiento: Int,
     @SerialName("nombre")
     var nombre: String,
+    @PrimaryKey
     @SerialName("matricula")
     var matricula: String
 )

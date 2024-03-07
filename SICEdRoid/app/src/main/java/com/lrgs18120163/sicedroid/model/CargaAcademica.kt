@@ -1,8 +1,10 @@
 package com.lrgs18120163.sicedroid.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-
+@Entity("CargaAcademica")
 @Serializable
 data class CargaAcademica (
     @SerialName("Semipresencial")
@@ -31,6 +33,7 @@ data class CargaAcademica (
     val creditosMateria : Int = 0,
     @SerialName("Materia")
     val materia : String = "",
+    @PrimaryKey
     @SerialName("Grupo")
     val grupo : String = ""
 )

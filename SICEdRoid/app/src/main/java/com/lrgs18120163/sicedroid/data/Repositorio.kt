@@ -1,6 +1,7 @@
 package com.lrgs18120163.sicedroid.data
 
 import android.util.Log
+import com.lrgs18120163.sicedroid.model.AccesoAlumno
 import com.lrgs18120163.sicedroid.network.AccesoAlumnoApi
 import com.lrgs18120163.sicedroid.network.DatosAlumnoApi
 import com.lrgs18120163.sicedroid.model.AccesoAlumnoEnvelope
@@ -176,4 +177,13 @@ class Repositorio(
         }
     }
 
+}
+
+class RepositorioLocal {
+
+    suspend fun accesoObjeto(): AccesoAlumno {
+        //verificar base de datos local
+        // PrepararRoom
+        return AccesoAlumno(matricula = "")
+    }
 }

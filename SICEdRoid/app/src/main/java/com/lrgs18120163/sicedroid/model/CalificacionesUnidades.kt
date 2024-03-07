@@ -1,9 +1,14 @@
 package com.lrgs18120163.sicedroid.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
+@Entity("CalificacionesUnidades")
 @Serializable
 data class CalificacionesUnidades (
+    @PrimaryKey
     @SerialName("Grupo")
     val grupo : String = "",
     @SerialName("Materia")
