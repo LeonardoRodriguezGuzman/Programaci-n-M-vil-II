@@ -8,8 +8,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.google.gson.Gson
 import com.lrgs18120163.sicedroid.model.AccesoAlumno
+import com.lrgs18120163.sicedroid.model.AccesoAlumnoS
 import com.lrgs18120163.sicedroid.model.CargaAcademica
 import com.lrgs18120163.sicedroid.model.DatosAlumno
+import com.lrgs18120163.sicedroid.model.DatosAlumnoS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,7 +29,7 @@ class MainActivity : ComponentActivity() {
             try {
                 val accesoAlumno = repositorio.getAcceso("","", "ALUMNO")
                 gson = Gson()
-                val aAlumno = gson.fromJson(accesoAlumno, AccesoAlumno::class.java)
+                val aAlumno = gson.fromJson(accesoAlumno, AccesoAlumnoS::class.java)
                 if (aAlumno.acceso) {
                     mostrarMensaje(applicationContext,
                         "Matricula: ${aAlumno.matricula}," +
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
                                 "Tipo de Usuario: ${aAlumno.tipoUsuario}")
 
                     val datosAlumno = repositorio.getAlumnoAcademicoWithLineamiento()
-                    val dAlumno = gson.fromJson(datosAlumno, DatosAlumno::class.java)
+                    val dAlumno = gson.fromJson(datosAlumno, DatosAlumnoS::class.java)
                     val sdf = SimpleDateFormat("dd/MM/yyyy|HH:mm")
                     val fecha = sdf.parse(dAlumno.fechaReins)
                     mostrarMensaje(applicationContext,

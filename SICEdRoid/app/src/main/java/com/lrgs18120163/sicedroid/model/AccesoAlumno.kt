@@ -4,10 +4,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Dao
 
-@Entity(tableName = "AccesoAlumno")
 @Serializable
-data class AccesoAlumno (
+data class AccesoAlumnoS (
     @SerialName("acceso")
     val acceso : Boolean = false,
     @SerialName("estatus")
@@ -16,7 +16,17 @@ data class AccesoAlumno (
     val tipoUsuario : Int = 0,
     @SerialName("contrasenia")
     val contrasenia : String = "",
-    @PrimaryKey
     @SerialName("matricula")
     val matricula : String = ""
+)
+
+@Entity(tableName = "AccesoAlumno")
+data class AccesoAlumno (
+    @PrimaryKey
+    val matricula : String = "",
+    val acceso : Boolean = false,
+    val estatus : String = "",
+    val tipoUsuario : Int = 0,
+    val contrasenia : String = ""
+
 )

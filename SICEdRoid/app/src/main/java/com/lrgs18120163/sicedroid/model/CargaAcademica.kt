@@ -4,9 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-@Entity("CargaAcademica")
+
+
 @Serializable
-data class CargaAcademica (
+data class CargaAcademicaS (
     @SerialName("Semipresencial")
     val semipresencial : String = "",
     @SerialName("Observaciones")
@@ -33,7 +34,24 @@ data class CargaAcademica (
     val creditosMateria : Int = 0,
     @SerialName("Materia")
     val materia : String = "",
-    @PrimaryKey
     @SerialName("Grupo")
+    val grupo : String = ""
+)
+@Entity
+data class CargaAcademica (
+    val semipresencial : String = "",
+    val observaciones : String = "",
+    val docente : String = "",
+    val clvOficial : String = "",
+    val sabado : String = "",
+    val viernes : String = "",
+    val jueves : String = "",
+    val miercoles : String = "",
+    val martes : String = "",
+    val lunes : String = "",
+    val estadoMateria : String = "",
+    val creditosMateria : Int = 0,
+    val materia : String = "",
+    @PrimaryKey
     val grupo : String = ""
 )

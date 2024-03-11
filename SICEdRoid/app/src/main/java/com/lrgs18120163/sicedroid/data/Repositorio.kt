@@ -28,7 +28,8 @@ class Repositorio(
     private val cargaAcademicaApi: CargaAcademicaApi,
     private val kardexApi: KardexApi,
     private val calificacionesUnidadApi: CalificacionesUnidadApi,
-    private val calificacionesFinalesApi: CalificacionesFinalesApi
+    private val calificacionesFinalesApi: CalificacionesFinalesApi,
+    private val repositorioDatabase: RepositorioDatabase
 ) {
 
     suspend fun getAcceso(matricula: String, contrasenia: String, tipoUsuario: String): String? {
@@ -177,13 +178,4 @@ class Repositorio(
         }
     }
 
-}
-
-class RepositorioLocal {
-
-    suspend fun accesoObjeto(): AccesoAlumno {
-        //verificar base de datos local
-        // PrepararRoom
-        return AccesoAlumno(matricula = "")
-    }
 }

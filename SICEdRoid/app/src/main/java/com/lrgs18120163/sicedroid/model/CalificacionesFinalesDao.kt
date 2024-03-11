@@ -9,7 +9,7 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface CalificacionesFinalesDao{
+interface CalificacionesFinalesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertarCalificacionesFinales(calificacionFinal: CalificacionesFinales)
     @Update
@@ -20,5 +20,5 @@ interface CalificacionesFinalesDao{
     fun getCalificacionFinal(grupo: String) : LiveData<CalificacionesFinales>
 
     @Query("SELECT * FROM CalificacionesFinales")
-    fun getAllCalificacionesFinales() : LiveData<CalificacionesFinales>
+    fun getAllCalificacionesFinales() : LiveData<List<CalificacionesFinales>>
 }

@@ -20,7 +20,7 @@ interface CargaAcademicaDao {
     fun getCargaAcademicaGrupo (grupo: String) : LiveData<CargaAcademica>
 
     @Query("SELECT * FROM CargaAcademica")
-    fun getAllCargaAcademica(grupo: String) :LiveData<List<CargaAcademica>>
+    fun getAllCargaAcademica() : LiveData<List<CargaAcademica>>
 
 
 }

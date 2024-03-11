@@ -5,10 +5,9 @@ import androidx.room.PrimaryKey
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Entity("CalificacionesFinales")
+
 @Serializable
-class CalificacionesFinales (
-    @PrimaryKey
+class CalificacionesFinalesS (
     @SerialName("grupo")
     val grupo : String = "",
     @SerialName("materia")
@@ -18,5 +17,15 @@ class CalificacionesFinales (
     @SerialName("acred")
     val acred : String = "",
     @SerialName("Observaciones")
+    val observaciones : String = ""
+)
+
+@Entity("CalificacionesFinales")
+class CalificacionesFinales (
+    @PrimaryKey
+    val grupo : String = "",
+    val materia : String = "",
+    val calif : Int = 0,
+    val acred : String = "",
     val observaciones : String = ""
 )

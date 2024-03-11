@@ -6,9 +6,8 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
-@Entity
 @Serializable
-data class DatosAlumno(
+data class DatosAlumnoS(
     @SerialName("fechaReins")
     var fechaReins: String,
     @SerialName("modEducativo")
@@ -37,7 +36,26 @@ data class DatosAlumno(
     var lineamiento: Int,
     @SerialName("nombre")
     var nombre: String,
-    @PrimaryKey
     @SerialName("matricula")
     var matricula: String
+)
+
+@Entity("DatosAlumno")
+data class DatosAlumno(
+    @PrimaryKey
+    var matricula: String,
+    var fechaReins: String,
+    var modEducativo: Int,
+    var adeudo: Boolean,
+    var urlFoto: String,
+    var adeudoDescripcion: String,
+    var inscrito: Boolean,
+    var estatus: String,
+    var semActual: Int,
+    var cdtosAcumulados: Int,
+    var cdtosActuales: Int,
+    var especialidad: String,
+    var carrera: String,
+    var lineamiento: Int,
+    var nombre: String
 )

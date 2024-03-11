@@ -1,6 +1,7 @@
 package com.lrgs18120163.sicedroid.data
 
 import android.content.Context
+import androidx.room.Room
 import com.lrgs18120163.sicedroid.network.AccesoAlumnoApi
 import com.lrgs18120163.sicedroid.network.AddCookiesInterceptor
 import com.lrgs18120163.sicedroid.network.DatosAlumnoApi
@@ -21,6 +22,7 @@ import retrofit2.create
  */
 interface AppContainer {
     val repositorio: Repositorio
+    //val repositorioLocal : RepositorioDatabase
 }
 
 /**
@@ -28,7 +30,8 @@ interface AppContainer {
  *
  * Variables are initialized lazily and the same instance is shared across the whole app.
  */
-class DefaultAppContainer(applicationContext: Context): AppContainer {
+class DefaultAppContainer(applicationContext: Context
+): AppContainer {
     private val baseUrl = "https://sicenet.surguanajuato.tecnm.mx"
 
     private var clienteOKHttp : OkHttpClient
@@ -71,8 +74,33 @@ class DefaultAppContainer(applicationContext: Context): AppContainer {
         retrofit.create(CalificacionesFinalesApi::class.java)
     }
     override val repositorio: Repositorio by lazy {
-        Repositorio(retrofitAccesoAlumno, retrofitDatosAlumno, retrofitCargaAcademica, retrofitKardexApi, retrofitCalificacionesUnidadApi, retrofitCalificacionesFinalesApi)
+        Repositorio(
+            retrofitAccesoAlumno,
+            retrofitDatosAlumno,
+            retrofitCargaAcademica,
+            retrofitKardexApi,
+            retrofitCalificacionesUnidadApi,
+            retrofitCalificacionesFinalesApi,
+            database
+        )
     }
+
+    private val database: RepositorioDatabase by lazy {
+        Room.databaseBuilder(applicationContext, RepositorioDatabase::class.java, "SiceDroid")
+            .build()
+    }
+    private val repositoriolocal: Repositorio by lazy {
+        Repositorio(
+            retrofitAccesoAlumno,
+            retrofitDatosAlumno,
+            retrofitCargaAcademica,
+            retrofitKardexApi,
+            retrofitCalificacionesUnidadApi,
+            retrofitCalificacionesFinalesApi,
+            database
+        )
+    }
+
 
 
     /**

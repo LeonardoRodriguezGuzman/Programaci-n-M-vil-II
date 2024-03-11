@@ -11,11 +11,17 @@ import androidx.room.Update
 @Dao
 interface AccesoAlumoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertarAccesoAlumno(accesoAlumno: AccesoAlumno) : String
+    suspend fun insertarAccesoAlumno(accesoAlumno: AccesoAlumno): Long
+
     @Update
-    fun actualizarAccesoAlumno(accesoAlumno: AccesoAlumno) : Boolean
+    suspend fun actualizarAccesoAlumno(accesoAlumno: AccesoAlumno): Int
+
     @Delete
-    fun eliminarAccesoAlumno(accesoAlumno: AccesoAlumno) : Boolean
+    suspend fun eliminarAccesoAlumno(accesoAlumno: AccesoAlumno): Int
+
     @Query("SELECT * FROM AccesoAlumno WHERE matricula = :matricula")
-    fun getAccesoAlumnoByMatricula(matricula: String) : LiveData<AccesoAlumno>
+    fun getAccesoAlumnoByMatricula(matricula: String): LiveData<AccesoAlumno>
+
+    // Additional methods as needed
 }
+
